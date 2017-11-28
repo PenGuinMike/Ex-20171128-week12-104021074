@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.InetAddress;
 
 public class SFrame extends JFrame{
@@ -42,7 +43,12 @@ public class SFrame extends JFrame{
         cp = this.getContentPane();
         cp.setLayout(new BorderLayout());
 
-        jlbPort.setText(InetAddress.getLocalHost());
+        try{
+            jlbPort.setText(InetAddress.getLocalHost());
+        }catch (IOException ioe){
+
+        }
+
 
         jpnR.add(jlbIP);jpnR.add(jlbIP1);
         jpnR.add(jlbPort);jpnR.add(jtf);
