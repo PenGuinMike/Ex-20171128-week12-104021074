@@ -1,5 +1,8 @@
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SFrame extends JFrame{
     Container cp;
@@ -21,6 +24,8 @@ public class SFrame extends JFrame{
     private JPanel jpnR = new JPanel(new GridLayout(7,1,6,10));
     private JPanel jpnA = new JPanel(new GridLayout(1,3,5,6));
     private JPanel jpnB = new JPanel(new GridLayout(2,1,3,6));
+
+    private Server serv;
 
     private JButton btn [] = new JButton[9];
 
@@ -52,5 +57,14 @@ public class SFrame extends JFrame{
             btn[i]=new JButton();
             jpnC.add(btn[i]);
         }
+
+        jbtnStart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                serv = new Server(SFrame.this);
+                serv.start();
+                jta.append("Waiting connect in .....\n");
+            }
+        });
     }
 }
