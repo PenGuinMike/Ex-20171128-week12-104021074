@@ -3,14 +3,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.InetAddress;
 
 public class SFrame extends JFrame{
+    private Server serv;
     Container cp;
     private JTextArea jta = new JTextArea();
     private JScrollPane jsp = new JScrollPane(jta);
 
     private JLabel jlbIP = new JLabel("Server IP:");
-    private JLabel jlbIP1 = new JLabel("8787878787");
+    private JLabel jlbIP1 = new JLabel("");
     private JLabel jlbPort = new JLabel("Port:");
 
     private JButton jbtnStart = new JButton("Start");
@@ -25,7 +27,7 @@ public class SFrame extends JFrame{
     private JPanel jpnA = new JPanel(new GridLayout(1,3,5,6));
     private JPanel jpnB = new JPanel(new GridLayout(2,1,3,6));
 
-    private Server serv;
+//    private InetAddress ipadrs;
 
     private JButton btn [] = new JButton[9];
 
@@ -39,6 +41,8 @@ public class SFrame extends JFrame{
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         cp = this.getContentPane();
         cp.setLayout(new BorderLayout());
+
+        jlbPort.setText(InetAddress.getLocalHost());
 
         jpnR.add(jlbIP);jpnR.add(jlbIP1);
         jpnR.add(jlbPort);jpnR.add(jtf);
